@@ -15,6 +15,7 @@
 		B74475652131000600E1148C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B74475642131000600E1148C /* Assets.xcassets */; };
 		B74475682131000600E1148C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B74475662131000600E1148C /* LaunchScreen.storyboard */; };
 		B74475742131011D00E1148C /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74475732131011D00E1148C /* Book.swift */; };
+		B78D97DD2132A01200C4B36F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D97DC2132A01200C4B36F /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		B74475672131000600E1148C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B74475692131000600E1148C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B74475732131011D00E1148C /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		B78D97DC2132A01200C4B36F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		F5D322E030A90B27743D8B6A /* Pods-book_api_search.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-book_api_search.debug.xcconfig"; path = "Pods/Target Support Files/Pods-book_api_search/Pods-book_api_search.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				B744755C2131000400E1148C /* ViewController.swift */,
+				B78D97DC2132A01200C4B36F /* DetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			files = (
 				B74475742131011D00E1148C /* Book.swift in Sources */,
 				B744755D2131000400E1148C /* ViewController.swift in Sources */,
+				B78D97DD2132A01200C4B36F /* DetailViewController.swift in Sources */,
 				B74475632131000400E1148C /* book_api_search.xcdatamodeld in Sources */,
 				B744755B2131000400E1148C /* AppDelegate.swift in Sources */,
 			);

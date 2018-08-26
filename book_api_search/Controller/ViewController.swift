@@ -11,17 +11,15 @@ import Alamofire
 import SwiftyJSON
 
 class ViewController: UIViewController,UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource {
+    var endpoint = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?applicationId=1013263298846387208"
+    var books:[Book] = []
+    var passedData:Book?
+    var param:Int = 0
+    
     @IBOutlet weak var bookTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    var books:[Book] = []
-    var pageCount = 0
-    
-    static let applicationID = "1013263298846387208"
-    var endpoint = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?applicationId=\(applicationID)"
-
     @IBOutlet weak var params: UISegmentedControl!
-    var param:Int = 0
-
+    
     @IBAction func paramChanged(_ sender: Any) {
         param = params.selectedSegmentIndex
     }
@@ -31,7 +29,6 @@ class ViewController: UIViewController,UISearchBarDelegate,UITableViewDelegate,U
         searchBar.delegate = self
         bookTableView.dataSource = self
         bookTableView.delegate = self
-
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -44,47 +41,59 @@ class ViewController: UIViewController,UISearchBarDelegate,UITableViewDelegate,U
         return cell
     }
     
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if self.bookTableView.contentOffset.y + self.bookTableView.frame.size.height > self.bookTableView.contentSize.height  && self.bookTableView.isDragging {
-//            print("now reached the bottom line!!")
-//        }
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       passedData = books[indexPath.row]
+        performSegue(withIdentifier: "toDetailVC", sender: nil)
+    }
+    
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        books = []
         let text = searchBar.text!
+        searchBar.text = ""
         let input = text.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
-        let searchWord = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?applicationId=1013263298846387208&author=\(input!)"
-        let url = URL(string: searchWord)
-        getBooks(url: url!)
-        
+        let searchWord = searchKey() ? "title" : "author"
+        let searchUrl = "\(endpoint)&\(searchWord)=\(input!)&size=2"
+        let url = URL(string: searchUrl)
+        getBooks(url!)
     }
     
-    func getBooks(url:URL) {
-        Alamofire.request(url).responseJSON { (response) in
-            defer{self.next()}
-            guard let object = response.result.value as? [String:Any] else{
-                print("error")
-                return
-            }
 
-            let json = JSON(object)
-            self.pageCount = json["count"].intValue
-//            var times = 0
-//            while times <= self.pageCount {
-//                
-//            }
-            json["Items"].forEach({ ( _ ,json) in
-                let book = Book(isbn: json["Item"]["isbn"].string!, title: json["Item"]["title"].string!, author: json["Item"]["author"].string!, salesDate: json["Item"]["salesDate"].string!, itemUrl: json["Item"]["itemUrl"].string!,publisherName: json["Item"]["publisherName"].string!, smallImageUrl: json["Item"]["smallImageUrl"].string!, mediumImageUrl: json["Item"]["mediumImageUrl"].string!, largeImageUrl: json["Item"]["largeImageUrl"].string!)
-                self.books.append(book)
-            })
+    func getBooks(_ url:URL) {
+        for i in 1...3{
+            let url = "\(url)&page=\(i)"
+            Alamofire.request(url).responseJSON { (response) in
+                defer{self.reloadData()}
+                guard let object = response.result.value as? [String:Any] else{
+                    print("error")
+                    return
+                }
+                let json = JSON(object)
+                json["Items"].forEach({ ( _ ,json) in
+                    let book = Book(isbn: json["Item"]["isbn"].string!, title: json["Item"]["title"].string!, author: json["Item"]["author"].string!, salesDate: json["Item"]["salesDate"].string!,itemCaption: json["Item"]["itemCaption"].string!, itemUrl: json["Item"]["itemUrl"].string!,publisherName: json["Item"]["publisherName"].string!, smallImageUrl: json["Item"]["smallImageUrl"].string!, mediumImageUrl: json["Item"]["mediumImageUrl"].string!, largeImageUrl: json["Item"]["largeImageUrl"].string!)
+                    
+                    self.books.append(book)
+                    print(self.books.count)
+                })
+            }
         }
-        
     }
     
-    func next(){
-        
-        print(self.books[0])
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let next = segue.destination as? DetailViewController
+        next?.book = passedData
+    }
+    
+    func reloadData(){
         self.bookTableView.reloadData()
+    }
+    
+    func searchKey() -> Bool{
+        if self.param == 0 {
+            return true
+        } else {
+            return false
+        }
     }
     
     

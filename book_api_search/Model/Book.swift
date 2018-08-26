@@ -15,6 +15,7 @@ struct Book {
     let title: String
     let author: String
     let salesDate: String
+    let itemCaption: String
     let itemUrl: String
     let publisherName: String
     let smallImageUrl: String?
@@ -24,24 +25,6 @@ struct Book {
 
 
 
-
-
-
-//
-//struct SearchData: Codable {
-//    let count: Int
-//    let page: Int
-//    let first: Int
-//    let last: Int
-//    let hits: Int
-//    let carrier: Int
-//    let pageCount: Int
-//    let items: BookList
-//}
-//
-//struct BookList: Codable {
-//    let item : [Book]
-//}
 
 //struct Book: Codable {
 //    let title: String

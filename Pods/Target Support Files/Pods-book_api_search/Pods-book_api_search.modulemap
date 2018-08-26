@@ -1,0 +1,6 @@
+framework module Pods_book_api_search {
+  umbrella header "Pods-book_api_search-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VwH-3K-jnf">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--BOOKSEARCH-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="book_api_search" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="cdI-vG-yLa">
+                                <rect key="frame" x="0.0" y="64" width="238" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rLz-eO-ubb">
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookCell" id="bak-mC-0ce">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bak-mC-0ce" id="1fQ-tC-EU7">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SJ8-bM-1ld">
+                                <rect key="frame" x="238" y="78" width="137" height="29"/>
+                                <segments>
+                                    <segment title="タイトル"/>
+                                    <segment title="著者"/>
+                                </segments>
+                                <connections>
+                                    <action selector="paramChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="fu0-g3-qjK"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="rLz-eO-ubb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7S5-vO-hfu"/>
+                            <constraint firstItem="cdI-vG-yLa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9rg-A4-1Yh"/>
+                            <constraint firstItem="SJ8-bM-1ld" firstAttribute="leading" secondItem="cdI-vG-yLa" secondAttribute="trailing" id="N3a-ig-04a"/>
+                            <constraint firstItem="SJ8-bM-1ld" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="N4e-Bv-dWg"/>
+                            <constraint firstItem="rLz-eO-ubb" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fT3-O2-m1u"/>
+                            <constraint firstItem="SJ8-bM-1ld" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="14" id="fXo-Ms-Aws"/>
+                            <constraint firstItem="rLz-eO-ubb" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="lXm-oC-dSn"/>
+                            <constraint firstItem="cdI-vG-yLa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="njb-Ga-ilt"/>
+                            <constraint firstItem="rLz-eO-ubb" firstAttribute="top" secondItem="SJ8-bM-1ld" secondAttribute="bottom" constant="14" id="qg7-h3-8Zz"/>
+                            <constraint firstItem="rLz-eO-ubb" firstAttribute="top" secondItem="cdI-vG-yLa" secondAttribute="bottom" id="zdA-Iu-uoo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="BOOKSEARCH" id="6eP-FR-aKB"/>
+                    <connections>
+                        <outlet property="bookTableView" destination="rLz-eO-ubb" id="oif-Vc-gHd"/>
+                        <outlet property="params" destination="SJ8-bM-1ld" id="Rlb-mC-QeP"/>
+                        <outlet property="searchBar" destination="cdI-vG-yLa" id="lsi-GM-ZsX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="132.68365817091455"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bPQ-5G-kiB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VwH-3K-jnf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="D2t-3P-BGR">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="5bq-Su-8jS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eft-Eo-wwt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="28" y="133"/>
+        </scene>
+    </scenes>
+</document>

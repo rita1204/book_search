@@ -63,7 +63,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="+本棚に追加する"/>
                                 <connections>
-                                    <action selector="saveData:" destination="gHP-uL-yfL" eventType="touchUpInside" id="Z9p-F8-eTr"/>
+                                    <action selector="addRemoveData:" destination="gHP-uL-yfL" eventType="touchUpInside" id="RbM-8Z-XbD"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="あらすじ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k2u-sm-UQV">
@@ -78,6 +78,7 @@
                         <viewLayoutGuide key="safeArea" id="eyP-oB-xkd"/>
                     </view>
                     <connections>
+                        <outlet property="addRemoveBtn" destination="7w3-WM-Uaa" id="91a-ZS-5zd"/>
                         <outlet property="authorLbl" destination="LWz-3H-cx8" id="Ga7-mA-V01"/>
                         <outlet property="bookImage" destination="hPO-Z9-xYg" id="Kkz-YH-i6E"/>
                         <outlet property="captionLbl" destination="lGj-B5-KDm" id="ayB-kQ-w67"/>

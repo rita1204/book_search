@@ -1,4 +1,3 @@
-//
 //  AppDelegate.swift
 //  book_api_search
 //

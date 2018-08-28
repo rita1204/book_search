@@ -42,5 +42,6 @@ class ResultVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         let next = segue.destination as? DetailVC
         next?.book = passedData
     }
-
+    
 }
+

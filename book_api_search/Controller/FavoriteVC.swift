@@ -11,6 +11,7 @@ import CoreData
 
 class FavoriteVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     private var books = [BookData]()
+    private var searchController: UISearchController!
     private var appDelegate = UIApplication.shared.delegate as! AppDelegate
     private var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     @IBOutlet weak var favoriteCollectionView: UICollectionView!
@@ -19,6 +20,7 @@ class FavoriteVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
         super.viewDidLoad()
         favoriteCollectionView.delegate = self
         favoriteCollectionView.dataSource = self
+        setup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,6 +31,20 @@ class FavoriteVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
             print("Could not fetch. \(error)")
         }
         favoriteCollectionView.reloadData()
+    }
+    
+    func setup() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        
+        navigationItem.title = "BookShelf"
+            // UISearchControllerをUINavigationItemのsearchControllerプロパティにセットする。
+        navigationItem.searchController = searchController
+            
+            // trueだとスクロールした時にSearchBarを隠す（デフォルトはtrue）
+            // falseだとスクロール位置に関係なく常にSearchBarが表示される
+        navigationItem.hidesSearchBarWhenScrolling = true
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -44,3 +60,18 @@ class FavoriteVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
         return books.count
     }
 }
+
+extension FavoriteVC: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        // SearchBarに入力したテキストを使って表示データをフィルタリングする。
+        let text = searchController.searchBar.text ?? ""
+        if text.isEmpty {
+            
+        } else {
+            
+        }
+        favoriteCollectionView.reloadData()
+    }
+}
+

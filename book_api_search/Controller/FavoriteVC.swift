@@ -15,6 +15,7 @@ class FavoriteVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
     private var appDelegate = UIApplication.shared.delegate as! AppDelegate
     private var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     @IBOutlet weak var favoriteCollectionView: UICollectionView!
+    var passedData:BookData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +60,18 @@ class FavoriteVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return books.count
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        passedData = books[indexPath.row]
+        performSegue(withIdentifier: "toBookShelfVC", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let next = segue.destination as? bookShelfVC
+        next?.bookData = passedData
+    }
+    
+    @IBAction func unwind(_ segue: UIStoryboardSegue) {}
+ 
 }
 
 extension FavoriteVC: UISearchResultsUpdating {

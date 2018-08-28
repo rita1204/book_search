@@ -152,6 +152,7 @@
                     <navigationItem key="navigationItem" id="2f6-gV-Isn"/>
                     <connections>
                         <outlet property="favoriteCollectionView" destination="M5f-82-8oW" id="01b-WU-BLa"/>
+                        <segue destination="aiO-at-PoZ" kind="show" identifier="toBookShelfVC" id="Syq-l1-BZx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zn1-4c-aLJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -380,6 +381,90 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lQm-Tv-tFP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="336.80000000000001" y="341.37931034482762"/>
+        </scene>
+        <!--Book ShelfVC-->
+        <scene sceneID="cPu-a3-h90">
+            <objects>
+                <viewController storyboardIdentifier="bookItemVC" id="aiO-at-PoZ" customClass="bookShelfVC" customModule="book_api_search" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BAh-oQ-nxJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JrV-on-9TY">
+                                <rect key="frame" x="16" y="78" width="130" height="197"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="風の歌を聴け" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxF-MW-Uor">
+                                <rect key="frame" x="154" y="64" width="205" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="新潮社" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R84-DW-qpW">
+                                <rect key="frame" x="154" y="190" width="205" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1972-5-12" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kh2-RK-7Vh">
+                                <rect key="frame" x="154" y="238" width="205" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1970年夏、あの日の風は、物憂く、ほろ苦く通り過ぎていった。ぼくたちの夢は、もう戻りはしない...。1970年の夏、海辺の町に帰省したぼくは、友人のネズミと" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKD-FP-4PP">
+                                <rect key="frame" x="16" y="329" width="343" height="216"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="村上春樹" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UdN-Si-yH3">
+                                <rect key="frame" x="154" y="124" width="205" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KGC-p0-rru">
+                                <rect key="frame" x="20" y="553" width="126" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="-本棚から削除する">
+                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="removeData:" destination="aiO-at-PoZ" eventType="touchUpInside" id="jLS-KM-yr0"/>
+                                    <segue destination="yIH-Qo-yL1" kind="unwind" identifier="unwind" unwindAction="unwind:" id="P1a-b4-k1d"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="あらすじ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEB-bb-9B5">
+                                <rect key="frame" x="16" y="283" width="76" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="kvK-pM-o2P"/>
+                    </view>
+                    <connections>
+                        <outlet property="addRemoveBtn" destination="KGC-p0-rru" id="Nnp-ly-PT4"/>
+                        <outlet property="authorLbl" destination="UdN-Si-yH3" id="EA3-ih-x38"/>
+                        <outlet property="bookImage" destination="JrV-on-9TY" id="Xb8-hl-xwE"/>
+                        <outlet property="captionLbl" destination="QKD-FP-4PP" id="sWl-Bk-4Ah"/>
+                        <outlet property="dateLbl" destination="kh2-RK-7Vh" id="q4m-Jr-3qv"/>
+                        <outlet property="publisherLbl" destination="R84-DW-qpW" id="jh5-W8-eiP"/>
+                        <outlet property="titleLbl" destination="zxF-MW-Uor" id="NbE-ro-BJn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hEy-cb-xf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="yIH-Qo-yL1" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2278" y="341"/>
         </scene>
     </scenes>
     <resources>

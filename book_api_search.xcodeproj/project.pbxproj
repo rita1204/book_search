@@ -23,6 +23,7 @@
 		B78D97FB2135193600C4B36F /* BookData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D97F92135193600C4B36F /* BookData+CoreDataProperties.swift */; };
 		B78D97FE21352A8F00C4B36F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D97FD21352A8F00C4B36F /* Extension.swift */; };
 		B78D980021352B9200C4B36F /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D97FF21352B9200C4B36F /* ListCell.swift */; };
+		B78D98022135677400C4B36F /* bookShelfVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D98012135677400C4B36F /* bookShelfVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		B78D97F92135193600C4B36F /* BookData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B78D97FD21352A8F00C4B36F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		B78D97FF21352B9200C4B36F /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
+		B78D98012135677400C4B36F /* bookShelfVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookShelfVC.swift; sourceTree = "<group>"; };
 		F5D322E030A90B27743D8B6A /* Pods-book_api_search.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-book_api_search.debug.xcconfig"; path = "Pods/Target Support Files/Pods-book_api_search/Pods-book_api_search.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +131,7 @@
 				B78D97ED213445C600C4B36F /* ResultVC.swift */,
 				B78D97DC2132A01200C4B36F /* DetailVC.swift */,
 				B78D97EF2134F44200C4B36F /* FavoriteVC.swift */,
+				B78D98012135677400C4B36F /* bookShelfVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				B78D97FA2135193600C4B36F /* BookData+CoreDataClass.swift in Sources */,
 				B78D97F02134F44200C4B36F /* FavoriteVC.swift in Sources */,
 				B78D97FB2135193600C4B36F /* BookData+CoreDataProperties.swift in Sources */,
+				B78D98022135677400C4B36F /* bookShelfVC.swift in Sources */,
 				B74475742131011D00E1148C /* Book.swift in Sources */,
 				B78D97FE21352A8F00C4B36F /* Extension.swift in Sources */,
 				B78D97F72135148900C4B36F /* ItemCell.swift in Sources */,

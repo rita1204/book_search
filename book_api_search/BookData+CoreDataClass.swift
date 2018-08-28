@@ -30,7 +30,6 @@ func saveData(data:BookData,book:Book) {
 }
 
 func deleteData(request: NSFetchRequest<BookData>)-> Bool {
-    
     do {
         let objects = try context.fetch(request)
         for object in objects {

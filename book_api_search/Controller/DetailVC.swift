@@ -29,12 +29,14 @@ class DetailVC: UIViewController {
             let favorite = NSEntityDescription.insertNewObject(forEntityName: "BookData", into: context) as! BookData
             
             saveData(data: favorite, book: self.book!)
-            changeBtnState()
             let banner = NotificationBanner(title: "本棚に追加されました！", style: .success)
             banner.show()
-        } else {
-            request.predicate = NSPredicate(format: "title = %@", (book?.title)!)
+            changeBtnState()
             
+        }
+        else {
+            request.predicate = NSPredicate(format: "title = %@", (book?.title)!)
+
             let result:Bool = deleteData(request: request)
             if result == true {
                 let banner = NotificationBanner(title: "本棚から削除されました！",style: .danger)
@@ -44,8 +46,8 @@ class DetailVC: UIViewController {
                 let banner = NotificationBanner(title: "削除に失敗しました",style: .warning)
                 banner.show()
             }
-            
-        }    
+
+        }
     }
     
     override func viewDidLoad() {
@@ -63,7 +65,7 @@ class DetailVC: UIViewController {
             addRemoveBtn.setAttributedTitle(btnTitle, for: .normal)
         } else {
             let addAttributes:[NSAttributedStringKey: Any] = [.foregroundColor: UIColor.blue]
-            let btnTitle = NSAttributedString(string: "+ 本棚に追加する", attributes: addAttributes)
+            let btnTitle = NSAttributedString(string: "+本棚に追加する", attributes: addAttributes)
             addRemoveBtn.setAttributedTitle(btnTitle, for: .normal)
         }
     }

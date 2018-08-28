@@ -2,7 +2,7 @@
 //  BookData+CoreDataProperties.swift
 //  book_api_search
 //
-//  Created by TAKUTO on 2018/08/27.
+//  Created by TAKUTO on 2018/08/28.
 //  Copyright © 2018年 TAKUTO. All rights reserved.
 //
 //
@@ -17,12 +17,12 @@ extension BookData {
         return NSFetchRequest<BookData>(entityName: "BookData")
     }
 
-    @NSManaged public var title: String?
     @NSManaged public var author: String?
-    @NSManaged public var image: String?
     @NSManaged public var caption: String?
-    @NSManaged public var url: String?
     @NSManaged public var date: String?
+    @NSManaged public var image: String?
     @NSManaged public var publisher: String?
+    @NSManaged public var title: String?
+    @NSManaged public var url: String?
 
 }

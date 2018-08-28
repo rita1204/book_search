@@ -24,7 +24,6 @@ class SearchVC: UIViewController,UISearchBarDelegate {
     }
     
 
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         books = []
         let text = searchBar.text!
@@ -36,14 +35,15 @@ class SearchVC: UIViewController,UISearchBarDelegate {
         getBooks(url!)
     }
     
-
     func getBooks(_ url:URL) {
         for i in 1...3{
             let url = "\(url)&page=\(i)"
             Alamofire.request(url).responseJSON { (response) in
-                defer{if i == 3 {
+                defer{
+                    if i == 3 {
                       self.performSegue(withIdentifier: "toResultVC", sender: nil)
-                    }}
+                    }
+                }
                 guard let object = response.result.value as? [String:Any] else{
                     print("error")
                     return
@@ -62,8 +62,6 @@ class SearchVC: UIViewController,UISearchBarDelegate {
         next?.books = books
     }
 
-    
-    
     func searchKey(_ searchBar:UISearchBar) -> Bool{
         if searchBar == self.titleSearchBar {
             return true
@@ -71,13 +69,6 @@ class SearchVC: UIViewController,UISearchBarDelegate {
             return false
         }
     }
-    
-    
-
-    
-
-
-
 
 }
 

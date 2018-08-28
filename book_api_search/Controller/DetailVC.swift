@@ -20,6 +20,20 @@ class DetailVC: UIViewController {
     private var appDelegate = UIApplication.shared.delegate as! AppDelegate
     private var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    
+    @IBAction func saveData(_ sender: Any) {
+        let favorite = NSEntityDescription.insertNewObject(forEntityName: "BookData", into: context) as! BookData
+        favorite.title = book?.title
+        favorite.author = book?.author
+        favorite.date = book?.salesDate
+        favorite.image = book?.largeImageUrl
+        favorite.publisher = book?.publisherName
+        favorite.caption = book?.itemCaption
+        favorite.url = book?.itemUrl
+        appDelegate.saveContext()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setData()
@@ -33,21 +47,6 @@ class DetailVC: UIViewController {
         dateLbl.text = book?.salesDate
         captionLbl.text = book?.itemCaption
     }
-    
-
-
 }
 
-extension UIImageView {
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
-    }
-}
+

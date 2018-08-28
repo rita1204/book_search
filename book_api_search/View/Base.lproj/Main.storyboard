@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -61,6 +62,9 @@
                                 <rect key="frame" x="20" y="553" width="126" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="+本棚に追加する"/>
+                                <connections>
+                                    <action selector="saveData:" destination="gHP-uL-yfL" eventType="touchUpInside" id="Z9p-F8-eTr"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="あらすじ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k2u-sm-UQV">
                                 <rect key="frame" x="16" y="283" width="76" height="38"/>
@@ -86,11 +90,10 @@
             </objects>
             <point key="canvasLocation" x="3196" y="-324"/>
         </scene>
-        <!--View Controller-->
+        <!--FavoriteVC-->
         <scene sceneID="tmE-rx-sp6">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zn1-4c-aLJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="xjM-2n-dth" sceneMemberID="viewController">
+                <viewController id="xjM-2n-dth" customClass="FavoriteVC" customModule="book_api_search" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TDH-xc-dNi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -100,19 +103,44 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6ln-5E-QIG">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="162" height="264"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="RhI-ws-brN">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="itemCell" id="RhI-ws-brN" customClass="ItemCell" customModule="book_api_search" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="162" height="264"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="162" height="264"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AVP-BE-0BM">
+                                                    <rect key="frame" x="20" y="20" width="122" height="177"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="風の歌を聴け" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fW5-jW-sim">
+                                                    <rect key="frame" x="18" y="204" width="134" height="32"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="村上春樹" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyT-9X-Ci1">
+                                                    <rect key="frame" x="20" y="230" width="132" height="34"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </view>
+                                        <connections>
+                                            <outlet property="authorLbl" destination="fyT-9X-Ci1" id="FqD-uN-bkd"/>
+                                            <outlet property="bookImage" destination="AVP-BE-0BM" id="m9k-UT-uEw"/>
+                                            <outlet property="titleLbl" destination="fW5-jW-sim" id="ejH-b3-c5C"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -121,11 +149,15 @@
                         <viewLayoutGuide key="safeArea" id="hwV-EK-uXs"/>
                     </view>
                     <navigationItem key="navigationItem" id="2f6-gV-Isn"/>
+                    <connections>
+                        <outlet property="favoriteCollectionView" destination="M5f-82-8oW" id="01b-WU-BLa"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zn1-4c-aLJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1276" y="341.37931034482762"/>
         </scene>
-        <!--SearchVC-->
+        <!--BookSearch-->
         <scene sceneID="MbI-ne-Y1V">
             <objects>
                 <viewController id="cWM-xo-5jn" customClass="SearchVC" customModule="book_api_search" customModuleProvider="target" sceneMemberID="viewController">
@@ -149,7 +181,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tgw-1R-VCH">
-                                        <rect key="frame" x="37" y="111" width="300" height="56"/>
+                                        <rect key="frame" x="37" y="98" width="300" height="56"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="barTintColor" red="0.1144420308" green="1" blue="0.76452651940000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -173,7 +205,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OVh-jr-FbB">
-                                        <rect key="frame" x="37" y="111" width="300" height="56"/>
+                                        <rect key="frame" x="37" y="85" width="300" height="56"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="barTintColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -185,7 +217,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="9Ov-0F-fMD"/>
                     </view>
-                    <navigationItem key="navigationItem" id="qtn-Xz-ml0"/>
+                    <navigationItem key="navigationItem" title="BookSearch" id="qtn-Xz-ml0"/>
                     <connections>
                         <outlet property="authorSearchBar" destination="OVh-jr-FbB" id="fuK-Sw-1Mq"/>
                         <outlet property="searchDisplayController" destination="cbv-mP-8vV" id="Dbf-tw-IIs"/>
@@ -225,13 +257,50 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookCell" id="XA9-d3-5R2">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookCell" rowHeight="85" id="XA9-d3-5R2" customClass="ListCell" customModule="book_api_search" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XA9-d3-5R2" id="84D-Ho-QQA">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="84.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1CQ-e5-zHF">
+                                                    <rect key="frame" x="15" y="0.0" width="55" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="55" id="I76-Z8-Loi"/>
+                                                        <constraint firstAttribute="height" constant="80" id="euR-Tn-ZEv"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="風の歌を聴け" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1i-K7-OzZ">
+                                                    <rect key="frame" x="87" y="11" width="263" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="村上春樹" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CUC-iN-90G">
+                                                    <rect key="frame" x="94" y="42.5" width="256" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="CUC-iN-90G" secondAttribute="trailing" constant="10" id="Hep-x7-4aO"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="y1i-K7-OzZ" secondAttribute="trailing" constant="10" id="Uvz-xd-4Es"/>
+                                                <constraint firstItem="y1i-K7-OzZ" firstAttribute="top" secondItem="84D-Ho-QQA" secondAttribute="topMargin" id="ZgB-Gi-Tyc"/>
+                                                <constraint firstItem="1CQ-e5-zHF" firstAttribute="leading" secondItem="84D-Ho-QQA" secondAttribute="leading" constant="15" id="ahO-9H-9bK"/>
+                                                <constraint firstItem="CUC-iN-90G" firstAttribute="top" secondItem="y1i-K7-OzZ" secondAttribute="bottom" constant="12" id="bZv-gr-eUY"/>
+                                                <constraint firstAttribute="bottom" secondItem="1CQ-e5-zHF" secondAttribute="bottom" constant="4.5" id="gKG-ic-lT5"/>
+                                                <constraint firstItem="CUC-iN-90G" firstAttribute="leading" secondItem="1CQ-e5-zHF" secondAttribute="trailing" constant="24" id="hlE-yi-pjW"/>
+                                                <constraint firstItem="y1i-K7-OzZ" firstAttribute="leading" secondItem="1CQ-e5-zHF" secondAttribute="trailing" constant="17" id="qlV-bP-6Mi"/>
+                                                <constraint firstItem="1CQ-e5-zHF" firstAttribute="top" secondItem="84D-Ho-QQA" secondAttribute="top" id="rPO-4e-qU6"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bookAuthor" destination="CUC-iN-90G" id="Sj5-GY-Y7f"/>
+                                            <outlet property="bookImage" destination="1CQ-e5-zHF" id="s01-Dk-05y"/>
+                                            <outlet property="bookTitle" destination="y1i-K7-OzZ" id="cMY-H8-HSW"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -262,6 +331,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="WS3-DM-6Y3" kind="relationship" relationship="viewControllers" id="gHh-Jq-ycd"/>
@@ -272,11 +342,11 @@
             </objects>
             <point key="canvasLocation" x="-616" y="10"/>
         </scene>
-        <!--Item 1-->
+        <!--探す-->
         <scene sceneID="5ga-i9-5Lc">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WS3-DM-6Y3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="JY7-yl-x9n"/>
+                <navigationController title="探す" automaticallyAdjustsScrollViewInsets="NO" id="WS3-DM-6Y3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="探す" image="SEARCH" id="JY7-yl-x9n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kmz-iD-3Dr">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -291,11 +361,11 @@
             </objects>
             <point key="canvasLocation" x="336.80000000000001" y="-324.28785607196403"/>
         </scene>
-        <!--Item 2-->
+        <!--本棚-->
         <scene sceneID="E3l-aP-peO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sX4-Xu-FOf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="tUh-IF-D6c"/>
+                <navigationController title="本棚" automaticallyAdjustsScrollViewInsets="NO" id="sX4-Xu-FOf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="本棚" image="BOOKSHELF-S" id="tUh-IF-D6c"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zhc-uR-3SZ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -312,7 +382,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BOOKSHELF-S" width="16" height="16"/>
         <image name="MAN" width="48" height="48"/>
+        <image name="SEARCH" width="16" height="16"/>
         <image name="TITLE" width="48" height="48"/>
     </resources>
 </document>

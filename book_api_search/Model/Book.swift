@@ -15,7 +15,7 @@ struct Book {
     let title: String
     let author: String
     let salesDate: String
-    let itemCaption: String
+    let itemCaption: String?
     let itemUrl: String
     let publisherName: String
     let smallImageUrl: String?

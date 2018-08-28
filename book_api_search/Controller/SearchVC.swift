@@ -10,50 +10,28 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class ViewController: UIViewController,UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource {
-    var endpoint = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?applicationId=1013263298846387208"
+class SearchVC: UIViewController,UISearchBarDelegate {
+    var endpoint = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?applicationId=1013263298846387208&size=2"
     var books:[Book] = []
-    var passedData:Book?
-    var param:Int = 0
     
-    @IBOutlet weak var bookTableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var params: UISegmentedControl!
-    
-    @IBAction func paramChanged(_ sender: Any) {
-        param = params.selectedSegmentIndex
-    }
+    @IBOutlet weak var titleSearchBar: UISearchBar!
+    @IBOutlet weak var authorSearchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.delegate = self
-        bookTableView.dataSource = self
-        bookTableView.delegate = self
+        titleSearchBar.delegate = self
+        authorSearchBar.delegate = self
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return books.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = bookTableView.dequeueReusableCell(withIdentifier: "bookCell", for: indexPath)
-        cell.textLabel?.text = books[indexPath.row].title
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       passedData = books[indexPath.row]
-        performSegue(withIdentifier: "toDetailVC", sender: nil)
-    }
-    
+
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         books = []
         let text = searchBar.text!
         searchBar.text = ""
         let input = text.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
-        let searchWord = searchKey() ? "title" : "author"
-        let searchUrl = "\(endpoint)&\(searchWord)=\(input!)&size=2"
+        let searchWord = searchKey(searchBar) ? "title" : "author"
+        let searchUrl = "\(endpoint)&\(searchWord)=\(input!)"
         let url = URL(string: searchUrl)
         getBooks(url!)
     }
@@ -63,7 +41,9 @@ class ViewController: UIViewController,UISearchBarDelegate,UITableViewDelegate,U
         for i in 1...3{
             let url = "\(url)&page=\(i)"
             Alamofire.request(url).responseJSON { (response) in
-                defer{self.reloadData()}
+                defer{if i == 3 {
+                      self.performSegue(withIdentifier: "toResultVC", sender: nil)
+                    }}
                 guard let object = response.result.value as? [String:Any] else{
                     print("error")
                     return
@@ -71,25 +51,21 @@ class ViewController: UIViewController,UISearchBarDelegate,UITableViewDelegate,U
                 let json = JSON(object)
                 json["Items"].forEach({ ( _ ,json) in
                     let book = Book(isbn: json["Item"]["isbn"].string!, title: json["Item"]["title"].string!, author: json["Item"]["author"].string!, salesDate: json["Item"]["salesDate"].string!,itemCaption: json["Item"]["itemCaption"].string!, itemUrl: json["Item"]["itemUrl"].string!,publisherName: json["Item"]["publisherName"].string!, smallImageUrl: json["Item"]["smallImageUrl"].string!, mediumImageUrl: json["Item"]["mediumImageUrl"].string!, largeImageUrl: json["Item"]["largeImageUrl"].string!)
-                    
                     self.books.append(book)
-                    print(self.books.count)
                 })
             }
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let next = segue.destination as? DetailViewController
-        next?.book = passedData
+        let next = segue.destination as? ResultVC
+        next?.books = books
     }
+
     
-    func reloadData(){
-        self.bookTableView.reloadData()
-    }
     
-    func searchKey() -> Bool{
-        if self.param == 0 {
+    func searchKey(_ searchBar:UISearchBar) -> Bool{
+        if searchBar == self.titleSearchBar {
             return true
         } else {
             return false

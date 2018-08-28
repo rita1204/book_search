@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreData
 
-class DetailViewController: UIViewController {
+class DetailVC: UIViewController {
     var book:Book?
     @IBOutlet weak var bookImage: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
@@ -16,11 +17,12 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var publisherLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var captionLbl: UILabel!
+    private var appDelegate = UIApplication.shared.delegate as! AppDelegate
+    private var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setData()
-        
     }
     
     func setData(){
@@ -31,6 +33,7 @@ class DetailViewController: UIViewController {
         dateLbl.text = book?.salesDate
         captionLbl.text = book?.itemCaption
     }
+    
 
 
 }

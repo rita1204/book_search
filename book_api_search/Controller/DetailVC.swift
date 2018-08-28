@@ -24,6 +24,14 @@ class DetailVC: UIViewController {
     let request = NSFetchRequest<BookData>(entityName: "BookData")
     
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setData()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        changeBtnState()
+    }
+    
     @IBAction func addRemoveData(_ sender: Any) {
         if bookExists() == false {
             let favorite = NSEntityDescription.insertNewObject(forEntityName: "BookData", into: context) as! BookData
@@ -36,7 +44,7 @@ class DetailVC: UIViewController {
         }
         else {
             request.predicate = NSPredicate(format: "title = %@", (book?.title)!)
-
+            
             let result:Bool = deleteData(request: request)
             if result == true {
                 let banner = NotificationBanner(title: "本棚から削除されました！",style: .danger)
@@ -46,17 +54,10 @@ class DetailVC: UIViewController {
                 let banner = NotificationBanner(title: "削除に失敗しました",style: .warning)
                 banner.show()
             }
-
+            
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setData()
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        changeBtnState()
-    }
     
     func changeBtnState() {
         if bookExists() == true {

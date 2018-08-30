@@ -40,14 +40,8 @@ class bookShelfVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         memos.removeAll()
-        let memoRequest: NSFetchRequest<Memo> = NSFetchRequest(entityName: "Memo")
-        let predicate = NSPredicate(format: "urlKey = %@",(bookData?.url)! )
-        memoRequest.predicate = predicate
-        do {
-            memos = try context.fetch(memoRequest)
-        } catch let error as NSError {
-            print(error)
-        }
+        //convert NSSet to Array
+        memos = Array(bookData!.memo!) as! [Memo]
         memoTableView.reloadData()
     }
     

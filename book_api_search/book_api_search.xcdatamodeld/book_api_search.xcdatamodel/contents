@@ -8,8 +8,16 @@
         <attribute name="publisher" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="memo" toMany="YES" deletionRule="Nullify" destinationEntity="Memo" inverseName="belong_to" inverseEntity="Memo" syncable="YES"/>
+    </entity>
+    <entity name="Memo" representedClassName="Memo" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="page" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="urlKey" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="belong_to" maxCount="1" deletionRule="Nullify" destinationEntity="BookData" inverseName="memo" inverseEntity="BookData" syncable="YES"/>
     </entity>
     <elements>
-        <element name="BookData" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="BookData" positionX="-63" positionY="-18" width="128" height="165"/>
+        <element name="Memo" positionX="-45" positionY="54" width="128" height="105"/>
     </elements>
 </model>

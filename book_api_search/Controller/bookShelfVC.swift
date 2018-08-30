@@ -11,23 +11,44 @@ import CoreData
 import NotificationBannerSwift
 
 class bookShelfVC: UIViewController {
-    var bookData: BookData?
+   
     @IBOutlet weak var bookImage: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var authorLbl: UILabel!
     @IBOutlet weak var publisherLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
-    @IBOutlet weak var captionLbl: UILabel!
     @IBOutlet weak var addRemoveBtn: UIButton!
+    @IBOutlet weak var memoTableView: UITableView!
+
     private var appDelegate = UIApplication.shared.delegate as! AppDelegate
     private var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     let request = NSFetchRequest<BookData>(entityName: "BookData")
+    var bookData: BookData?
+    var memos = [Memo]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        memoTableView.delegate = self
+        memoTableView.dataSource = self
+        memoTableView.estimatedRowHeight = 90
+        memoTableView.rowHeight = UITableViewAutomaticDimension
+        let rightBarButtonItem:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addMemo) )
+        navigationItem.setRightBarButton(rightBarButtonItem, animated: true)
         setData()
-
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        memos.removeAll()
+        let memoRequest: NSFetchRequest<Memo> = NSFetchRequest(entityName: "Memo")
+        let predicate = NSPredicate(format: "urlKey = %@",(bookData?.url)! )
+        memoRequest.predicate = predicate
+        do {
+            memos = try context.fetch(memoRequest)
+        } catch let error as NSError {
+            print(error)
+        }
+        memoTableView.reloadData()
     }
     
     @IBAction func removeData(_ sender: Any) {
@@ -42,6 +63,15 @@ class bookShelfVC: UIViewController {
             banner.show()
         }
     }
+    
+    @objc func addMemo(_ sender:UIBarButtonItem) {
+        performSegue(withIdentifier: "toMemo", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let next = segue.destination as? memoVC
+        next?.bookData = bookData
+    }
 
     
     func setData() {
@@ -50,8 +80,22 @@ class bookShelfVC: UIViewController {
         authorLbl.text = bookData?.author
         publisherLbl.text = bookData?.publisher
         dateLbl.text = bookData?.date
-        captionLbl.text = bookData?.caption
     }
 
 
+}
+
+extension bookShelfVC : UITableViewDataSource,UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return memos.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = memoTableView.dequeueReusableCell(withIdentifier: "memoCell") as! memoCell
+        cell.pageLbl.text = "page:" + memos[indexPath.row].page!
+        cell.contentLbl.text = memos[indexPath.row].content
+        cell.memoIcon = UIImageView(image: UIImage(named: "risu"))
+        return cell
+    }
+    
 }

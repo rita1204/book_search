@@ -62,7 +62,7 @@ class DetailVC: UIViewController {
     func changeBtnState() {
         if bookExists() == true {
             let removeAttributes:[NSAttributedStringKey: Any] = [.foregroundColor: UIColor.red]
-            let btnTitle = NSAttributedString(string: "- 本棚から削除する", attributes: removeAttributes)
+            let btnTitle = NSAttributedString(string: "-本棚から削除する", attributes: removeAttributes)
             addRemoveBtn.setAttributedTitle(btnTitle, for: .normal)
         } else {
             let addAttributes:[NSAttributedStringKey: Any] = [.foregroundColor: UIColor.blue]

@@ -10,6 +10,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--DetailVC-->
         <scene sceneID="5FT-bm-NYO">
@@ -84,9 +89,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7w3-WM-Uaa">
-                                <rect key="frame" x="20" y="553" width="126" height="30"/>
+                                <rect key="frame" x="20" y="553" width="117" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="126" id="919-eW-aHy"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="126" id="919-eW-aHy"/>
                                     <constraint firstAttribute="height" constant="30" id="SYX-sP-Cf3"/>
                                 </constraints>
                                 <state key="normal" title="+本棚に追加する"/>
@@ -95,9 +100,9 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あらすじ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k2u-sm-UQV">
-                                <rect key="frame" x="16" y="283" width="76" height="38"/>
+                                <rect key="frame" x="16" y="283" width="69.5" height="38"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="76" id="dnq-nj-9bD"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="76" id="dnq-nj-9bD"/>
                                     <constraint firstAttribute="height" constant="38" id="l3q-ZR-Hk3"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -568,7 +573,11 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KGC-p0-rru">
-                                <rect key="frame" x="16" y="567" width="130" height="30"/>
+                                <rect key="frame" x="16" y="314" width="130" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="KCh-w7-8sV"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="130" id="L4D-X0-Gqp"/>
+                                </constraints>
                                 <state key="normal" title="-本棚から削除する">
                                     <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -577,37 +586,71 @@
                                     <segue destination="yIH-Qo-yL1" kind="unwind" identifier="unwind" unwindAction="unwind:" id="P1a-b4-k1d"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あらすじ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEB-bb-9B5">
-                                <rect key="frame" x="16" y="314" width="76" height="38"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="76" id="Fyo-xL-c68"/>
-                                    <constraint firstAttribute="height" constant="38" id="mli-7n-2e1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1970年夏、あの日の風は、物憂く、ほろ苦く通り過ぎていった。ぼくたちの夢は、もう戻りはしない...。1970年の夏、海辺の町に帰省したぼくは、友人のネズミと" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKD-FP-4PP">
-                                <rect key="frame" x="16" y="360" width="343" height="180"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="hsX-Ri-vpv"/>
-                                    <constraint firstAttribute="width" constant="343" id="u7T-1Y-YWB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oQ6-71-DxD">
+                                <rect key="frame" x="0.0" y="352" width="375" height="266"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="memoCell" rowHeight="87" id="GCe-7t-vFl" customClass="memoCell" customModule="book_api_search" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="87"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GCe-7t-vFl" id="Zcw-oc-CKM">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="86.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page:55" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3n-d7-mcd">
+                                                    <rect key="frame" x="15" y="11" width="64" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="66n-va-cVJ"/>
+                                                        <constraint firstAttribute="width" constant="64" id="FyD-f1-xyh"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="村上春樹の処女作ということで読み始めた。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeL-H8-Ynw">
+                                                    <rect key="frame" x="102" y="11" width="231" height="53"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="risu" translatesAutoresizingMaskIntoConstraints="NO" id="EBk-QI-f32">
+                                                    <rect key="frame" x="31" y="33" width="32" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="5mF-Dv-wuK"/>
+                                                        <constraint firstAttribute="width" constant="32" id="xlg-KM-nkb"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="i3n-d7-mcd" firstAttribute="leading" secondItem="Zcw-oc-CKM" secondAttribute="leadingMargin" id="8aG-qz-2C9"/>
+                                                <constraint firstItem="i3n-d7-mcd" firstAttribute="top" secondItem="Zcw-oc-CKM" secondAttribute="topMargin" id="J2H-Gz-64h"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="aeL-H8-Ynw" secondAttribute="bottom" constant="12" id="h1D-Li-Ogq"/>
+                                                <constraint firstItem="aeL-H8-Ynw" firstAttribute="top" secondItem="Zcw-oc-CKM" secondAttribute="topMargin" id="i8u-oM-n9x"/>
+                                                <constraint firstItem="aeL-H8-Ynw" firstAttribute="leading" secondItem="i3n-d7-mcd" secondAttribute="trailing" constant="23" id="jIb-NL-Phb"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="aeL-H8-Ynw" secondAttribute="trailing" constant="27" id="tiY-Gz-KU1"/>
+                                                <constraint firstItem="EBk-QI-f32" firstAttribute="top" secondItem="i3n-d7-mcd" secondAttribute="bottom" constant="1" id="vJp-Lv-fRr"/>
+                                                <constraint firstItem="EBk-QI-f32" firstAttribute="leading" secondItem="Zcw-oc-CKM" secondAttribute="leadingMargin" constant="16" id="wf3-q0-fMn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentLbl" destination="aeL-H8-Ynw" id="Deu-Nu-9VB"/>
+                                            <outlet property="memoIcon" destination="EBk-QI-f32" id="M1m-Ee-Eng"/>
+                                            <outlet property="pageLbl" destination="i3n-d7-mcd" id="bMp-53-5N5"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="GSf-P1-Wdh" firstAttribute="leading" secondItem="kvK-pM-o2P" secondAttribute="leading" constant="16" id="1fc-P7-sf9"/>
-                            <constraint firstItem="QKD-FP-4PP" firstAttribute="leading" secondItem="kvK-pM-o2P" secondAttribute="leading" constant="16" id="GfW-fw-vqk"/>
+                            <constraint firstItem="KGC-p0-rru" firstAttribute="top" secondItem="GSf-P1-Wdh" secondAttribute="bottom" constant="8" id="AA8-UU-W5b"/>
+                            <constraint firstItem="oQ6-71-DxD" firstAttribute="leading" secondItem="kvK-pM-o2P" secondAttribute="leading" id="AQf-Ls-BRJ"/>
+                            <constraint firstItem="oQ6-71-DxD" firstAttribute="bottom" secondItem="kvK-pM-o2P" secondAttribute="bottom" id="HaB-WA-m5o"/>
                             <constraint firstItem="GSf-P1-Wdh" firstAttribute="top" secondItem="kvK-pM-o2P" secondAttribute="top" constant="42" id="KEW-7R-124"/>
-                            <constraint firstItem="KGC-p0-rru" firstAttribute="top" secondItem="QKD-FP-4PP" secondAttribute="bottom" constant="27" id="RYr-P5-Tux"/>
-                            <constraint firstItem="QKD-FP-4PP" firstAttribute="top" secondItem="EEB-bb-9B5" secondAttribute="bottom" constant="8" id="UvQ-Gu-zRB"/>
-                            <constraint firstItem="EEB-bb-9B5" firstAttribute="top" secondItem="GSf-P1-Wdh" secondAttribute="bottom" constant="8" id="ika-Yv-TRO"/>
-                            <constraint firstItem="kvK-pM-o2P" firstAttribute="trailing" secondItem="QKD-FP-4PP" secondAttribute="trailing" constant="16" id="jzo-w5-w2L"/>
-                            <constraint firstItem="EEB-bb-9B5" firstAttribute="leading" secondItem="kvK-pM-o2P" secondAttribute="leading" constant="16" id="uBr-IM-dL9"/>
+                            <constraint firstItem="KGC-p0-rru" firstAttribute="leading" secondItem="kvK-pM-o2P" secondAttribute="leading" constant="16" id="WSY-Sn-5Lp"/>
+                            <constraint firstItem="oQ6-71-DxD" firstAttribute="top" secondItem="KGC-p0-rru" secondAttribute="bottom" constant="8" id="msl-iz-MOg"/>
+                            <constraint firstItem="oQ6-71-DxD" firstAttribute="trailing" secondItem="kvK-pM-o2P" secondAttribute="trailing" id="w8L-ql-A7U"/>
                             <constraint firstItem="KGC-p0-rru" firstAttribute="leading" secondItem="kvK-pM-o2P" secondAttribute="leading" constant="16" id="yVH-VA-BQn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kvK-pM-o2P"/>
@@ -616,16 +659,92 @@
                         <outlet property="addRemoveBtn" destination="KGC-p0-rru" id="Nnp-ly-PT4"/>
                         <outlet property="authorLbl" destination="UdN-Si-yH3" id="EA3-ih-x38"/>
                         <outlet property="bookImage" destination="JrV-on-9TY" id="Xb8-hl-xwE"/>
-                        <outlet property="captionLbl" destination="QKD-FP-4PP" id="sWl-Bk-4Ah"/>
                         <outlet property="dateLbl" destination="kh2-RK-7Vh" id="q4m-Jr-3qv"/>
+                        <outlet property="memoTableView" destination="oQ6-71-DxD" id="tYH-j8-trH"/>
                         <outlet property="publisherLbl" destination="R84-DW-qpW" id="jh5-W8-eiP"/>
                         <outlet property="titleLbl" destination="zxF-MW-Uor" id="NbE-ro-BJn"/>
+                        <segue destination="OU0-Sq-Sz5" kind="presentation" identifier="toMemo" id="axl-C5-3qT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hEy-cb-xf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="yIH-Qo-yL1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2277.5999999999999" y="340.47976011994007"/>
+            <point key="canvasLocation" x="2274" y="377"/>
+        </scene>
+        <!--MemoVC-->
+        <scene sceneID="GFp-40-LhS">
+            <objects>
+                <viewController id="OU0-Sq-Sz5" customClass="memoVC" customModule="book_api_search" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="S5Z-GO-lI1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7A1-ZS-1UA">
+                                <rect key="frame" x="42" y="246" width="317" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qqj-PF-ExN">
+                                <rect key="frame" x="42" y="147" width="139" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="読み進めたページ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2P-NB-wkw">
+                                <rect key="frame" x="54" y="113" width="139" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="メモ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXH-xy-b4i">
+                                <rect key="frame" x="54" y="217" width="35" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="memo" translatesAutoresizingMaskIntoConstraints="NO" id="ErM-xb-WxL">
+                                <rect key="frame" x="16" y="212" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bookmark" translatesAutoresizingMaskIntoConstraints="NO" id="l7D-e9-Vwi">
+                                <rect key="frame" x="16" y="107" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxn-xK-7eT">
+                                <rect key="frame" x="17" y="415" width="108" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="メモを保存する"/>
+                                <connections>
+                                    <action selector="saveBtn:" destination="OU0-Sq-Sz5" eventType="touchUpInside" id="3cb-Vc-LoQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7e-iK-9pL">
+                                <rect key="frame" x="165" y="415" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="キャンセル">
+                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelBtn:" destination="OU0-Sq-Sz5" eventType="touchUpInside" id="5bF-Hs-0h1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="BTz-YS-UQh"/>
+                    </view>
+                    <connections>
+                        <outlet property="contentField" destination="7A1-ZS-1UA" id="Lw5-yB-sV7"/>
+                        <outlet property="pageField" destination="Qqj-PF-ExN" id="nhJ-9q-Wvu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KbX-6Z-6wE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3199.1999999999998" y="377.36131934032989"/>
         </scene>
     </scenes>
     <resources>
@@ -633,5 +752,8 @@
         <image name="MAN" width="48" height="48"/>
         <image name="SEARCH" width="16" height="16"/>
         <image name="TITLE" width="48" height="48"/>
+        <image name="bookmark" width="32" height="32"/>
+        <image name="memo" width="32" height="32"/>
+        <image name="risu" width="32" height="32"/>
     </resources>
 </document>

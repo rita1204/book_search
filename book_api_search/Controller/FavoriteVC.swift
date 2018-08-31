@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class FavoriteVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+class FavoriteVC: UIViewController {
     private var books = [BookData]()
     private var searchController: UISearchController!
     private var appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -26,6 +26,19 @@ class FavoriteVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        fetchAllData()
+    }
+    
+    func setup() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.title = "BookShelf"
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = true
+    }
+    
+    func fetchAllData(){
         do {
             books = try context.fetch(BookData.fetchRequest())
         } catch let error as NSError {
@@ -34,20 +47,17 @@ class FavoriteVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
         favoriteCollectionView.reloadData()
     }
     
-    func setup() {
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        
-        navigationItem.title = "BookShelf"
-            // UISearchControllerをUINavigationItemのsearchControllerプロパティにセットする。
-        navigationItem.searchController = searchController
-            
-            // trueだとスクロールした時にSearchBarを隠す（デフォルトはtrue）
-            // falseだとスクロール位置に関係なく常にSearchBarが表示される
-        navigationItem.hidesSearchBarWhenScrolling = true
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let next = segue.destination as? bookShelfVC
+        next?.bookData = passedData
     }
     
+    @IBAction func unwind(_ segue: UIStoryboardSegue) {}
+ 
+}
+
+extension FavoriteVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = favoriteCollectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as! ItemCell
         let book = books[indexPath.row]
@@ -64,14 +74,6 @@ class FavoriteVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
         passedData = books[indexPath.row]
         performSegue(withIdentifier: "toBookShelfVC", sender: nil)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let next = segue.destination as? bookShelfVC
-        next?.bookData = passedData
-    }
-    
-    @IBAction func unwind(_ segue: UIStoryboardSegue) {}
- 
 }
 
 extension FavoriteVC: UISearchResultsUpdating {
@@ -80,9 +82,12 @@ extension FavoriteVC: UISearchResultsUpdating {
         // SearchBarに入力したテキストを使って表示データをフィルタリングする。
         let text = searchController.searchBar.text ?? ""
         if text.isEmpty {
-            
+            print("not filetered")
+            fetchAllData()
         } else {
-            
+            books = books.filter { (book: BookData) -> Bool in
+                return (book.title?.contains(text))! || (book.author?.contains(text))!
+            }
         }
         favoriteCollectionView.reloadData()
     }

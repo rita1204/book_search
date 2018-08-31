@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ResultVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
+class ResultVC: UIViewController{
     @IBOutlet weak var bookTableView: UITableView!
     var books:[Book]?
     var passedData:Book?
@@ -20,6 +20,14 @@ class ResultVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         bookTableView.estimatedRowHeight = 85
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let next = segue.destination as? DetailVC
+        next?.book = passedData
+    }
+    
+}
+
+extension ResultVC: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return books!.count
     }
@@ -37,11 +45,5 @@ class ResultVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         passedData = books?[indexPath.row]
         performSegue(withIdentifier: "toDetailVC", sender: nil)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let next = segue.destination as? DetailVC
-        next?.book = passedData
-    }
-    
 }
 

@@ -11,8 +11,8 @@ import Alamofire
 import SwiftyJSON
 
 class SearchVC: UIViewController,UISearchBarDelegate {
-    var endpoint = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?applicationId=1013263298846387208&size=2"
-    var books:[Book] = []
+    private var endpoint = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?applicationId=1013263298846387208&size=2"
+    var books = [Book]()
     
     @IBOutlet weak var titleSearchBar: UISearchBar!
     @IBOutlet weak var authorSearchBar: UISearchBar!
@@ -36,11 +36,11 @@ class SearchVC: UIViewController,UISearchBarDelegate {
     }
     
     func getBooks(_ url:URL) {
-        for i in 1...3{
+        for i in 1...9{
             let url = "\(url)&page=\(i)"
             Alamofire.request(url).responseJSON { (response) in
                 defer{
-                    if i == 3 {
+                    if i == 9 {
                       self.performSegue(withIdentifier: "toResultVC", sender: nil)
                     }
                 }

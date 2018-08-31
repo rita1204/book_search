@@ -17,17 +17,17 @@
 		B74475742131011D00E1148C /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74475732131011D00E1148C /* Book.swift */; };
 		B772321B213691F8003BA80B /* memoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B772321A213691F8003BA80B /* memoCell.swift */; };
 		B772323C2136F751003BA80B /* memoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B772323B2136F751003BA80B /* memoVC.swift */; };
+		B772324D21381932003BA80B /* BookData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B772324921381932003BA80B /* BookData+CoreDataClass.swift */; };
+		B772324E21381932003BA80B /* BookData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B772324A21381932003BA80B /* BookData+CoreDataProperties.swift */; };
+		B772324F21381932003BA80B /* Memo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B772324B21381932003BA80B /* Memo+CoreDataClass.swift */; };
+		B772325021381932003BA80B /* Memo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B772324C21381932003BA80B /* Memo+CoreDataProperties.swift */; };
 		B78D97DD2132A01200C4B36F /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D97DC2132A01200C4B36F /* DetailVC.swift */; };
 		B78D97EE213445C600C4B36F /* ResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D97ED213445C600C4B36F /* ResultVC.swift */; };
 		B78D97F02134F44200C4B36F /* FavoriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D97EF2134F44200C4B36F /* FavoriteVC.swift */; };
 		B78D97F72135148900C4B36F /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D97F62135148900C4B36F /* ItemCell.swift */; };
-		B78D97FA2135193600C4B36F /* BookData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D97F82135193600C4B36F /* BookData+CoreDataClass.swift */; };
 		B78D97FE21352A8F00C4B36F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D97FD21352A8F00C4B36F /* Extension.swift */; };
 		B78D980021352B9200C4B36F /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D97FF21352B9200C4B36F /* ListCell.swift */; };
 		B78D98022135677400C4B36F /* bookShelfVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D98012135677400C4B36F /* bookShelfVC.swift */; };
-		B78D98082136208200C4B36F /* Memo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D98052136208200C4B36F /* Memo+CoreDataClass.swift */; };
-		B78D9810213629C600C4B36F /* BookData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D980E213629C600C4B36F /* BookData+CoreDataProperties.swift */; };
-		B78D9811213629C600C4B36F /* Memo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D980F213629C600C4B36F /* Memo+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,17 +44,17 @@
 		B74475732131011D00E1148C /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		B772321A213691F8003BA80B /* memoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memoCell.swift; sourceTree = "<group>"; };
 		B772323B2136F751003BA80B /* memoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memoVC.swift; sourceTree = "<group>"; };
+		B772324921381932003BA80B /* BookData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B772324A21381932003BA80B /* BookData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B772324B21381932003BA80B /* Memo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Memo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B772324C21381932003BA80B /* Memo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Memo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B78D97DC2132A01200C4B36F /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		B78D97ED213445C600C4B36F /* ResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultVC.swift; sourceTree = "<group>"; };
 		B78D97EF2134F44200C4B36F /* FavoriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVC.swift; sourceTree = "<group>"; };
 		B78D97F62135148900C4B36F /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
-		B78D97F82135193600C4B36F /* BookData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B78D97FD21352A8F00C4B36F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		B78D97FF21352B9200C4B36F /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		B78D98012135677400C4B36F /* bookShelfVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookShelfVC.swift; sourceTree = "<group>"; };
-		B78D98052136208200C4B36F /* Memo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Memo+CoreDataClass.swift"; sourceTree = "<group>"; };
-		B78D980E213629C600C4B36F /* BookData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookData+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		B78D980F213629C600C4B36F /* Memo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Memo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F5D322E030A90B27743D8B6A /* Pods-book_api_search.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-book_api_search.debug.xcconfig"; path = "Pods/Target Support Files/Pods-book_api_search/Pods-book_api_search.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,10 +165,10 @@
 		B78D9803213593D600C4B36F /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				B78D980E213629C600C4B36F /* BookData+CoreDataProperties.swift */,
-				B78D97F82135193600C4B36F /* BookData+CoreDataClass.swift */,
-				B78D980F213629C600C4B36F /* Memo+CoreDataProperties.swift */,
-				B78D98052136208200C4B36F /* Memo+CoreDataClass.swift */,
+				B772324921381932003BA80B /* BookData+CoreDataClass.swift */,
+				B772324A21381932003BA80B /* BookData+CoreDataProperties.swift */,
+				B772324B21381932003BA80B /* Memo+CoreDataClass.swift */,
+				B772324C21381932003BA80B /* Memo+CoreDataProperties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -303,21 +303,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B78D97FA2135193600C4B36F /* BookData+CoreDataClass.swift in Sources */,
+				B772324D21381932003BA80B /* BookData+CoreDataClass.swift in Sources */,
 				B78D97F02134F44200C4B36F /* FavoriteVC.swift in Sources */,
-				B78D9810213629C600C4B36F /* BookData+CoreDataProperties.swift in Sources */,
-				B78D9811213629C600C4B36F /* Memo+CoreDataProperties.swift in Sources */,
+				B772324F21381932003BA80B /* Memo+CoreDataClass.swift in Sources */,
 				B78D98022135677400C4B36F /* bookShelfVC.swift in Sources */,
-				B78D98082136208200C4B36F /* Memo+CoreDataClass.swift in Sources */,
 				B74475742131011D00E1148C /* Book.swift in Sources */,
 				B772321B213691F8003BA80B /* memoCell.swift in Sources */,
 				B78D97FE21352A8F00C4B36F /* Extension.swift in Sources */,
+				B772325021381932003BA80B /* Memo+CoreDataProperties.swift in Sources */,
 				B78D97F72135148900C4B36F /* ItemCell.swift in Sources */,
 				B744755D2131000400E1148C /* SearchVC.swift in Sources */,
 				B78D97EE213445C600C4B36F /* ResultVC.swift in Sources */,
 				B78D97DD2132A01200C4B36F /* DetailVC.swift in Sources */,
 				B772323C2136F751003BA80B /* memoVC.swift in Sources */,
 				B78D980021352B9200C4B36F /* ListCell.swift in Sources */,
+				B772324E21381932003BA80B /* BookData+CoreDataProperties.swift in Sources */,
 				B74475632131000400E1148C /* book_api_search.xcdatamodeld in Sources */,
 				B744755B2131000400E1148C /* AppDelegate.swift in Sources */,
 			);

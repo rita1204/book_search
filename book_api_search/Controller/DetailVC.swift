@@ -28,8 +28,18 @@ class DetailVC: UIViewController {
         super.viewDidLoad()
         setData()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         changeBtnState()
+    }
+    
+    @IBAction func openBrowser(_ sender: Any) {
+        let url = URL(string: (book?.itemUrl)!)!
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
     
     @IBAction func addRemoveData(_ sender: Any) {
@@ -45,8 +55,8 @@ class DetailVC: UIViewController {
         else {
             request.predicate = NSPredicate(format: "title = %@", (book?.title)!)
             
-            let result:Bool = deleteData(request: request)
-            if result == true {
+            let success:Bool = deleteBook(request: request)
+            if success == true {
                 let banner = NotificationBanner(title: "本棚から削除されました！",style: .danger)
                 banner.show()
                 changeBtnState()
@@ -87,5 +97,3 @@ class DetailVC: UIViewController {
         captionLbl.text = book?.itemCaption
     }
 }
-
-

@@ -2,7 +2,7 @@
 //  BookData+CoreDataClass.swift
 //  book_api_search
 //
-//  Created by TAKUTO on 2018/08/28.
+//  Created by TAKUTO on 2018/08/30.
 //  Copyright © 2018年 TAKUTO. All rights reserved.
 //
 //
@@ -11,11 +11,9 @@ import UIKit
 import CoreData
 
 
-
 public class BookData: NSManagedObject {
 
 }
-
 private var appDelegate = UIApplication.shared.delegate as! AppDelegate
 private var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 func saveData(data:BookData,book:Book) {
@@ -29,7 +27,7 @@ func saveData(data:BookData,book:Book) {
     appDelegate.saveContext()
 }
 
-func deleteData(request: NSFetchRequest<BookData>)-> Bool {
+func deleteBook(request: NSFetchRequest<BookData>)-> Bool {
     do {
         let objects = try context.fetch(request)
         for object in objects {
